@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="container">
+<section id="content">
+        <article>
+
+            <p class="article-date">
+                    {{ article.locale_date }}
+            </p>
+
+            <header class="header">
+                <a href="{{ SITEURL }}/{{ article.url }}"
+                   rel="bookmark"
+                   title="Permalink to {{ article.title|striptags }}">
+                    <h2 class="blogpost-title">{{ article.title }}</h2>
+                </a>
+            </header>
+            <div>
+            {{ article.content }}
+            </div>
+            <div class="article-info">
+            {% include 'includes/article_info.html' %}
+            </div>
+            <!-- /.entry-content -->
+            {% include 'includes/comments.html' %}
+        </article>
+
+        <ul class="pager">
+        {% if article.prev_article %}
+            <li class="previous">
+                <a href="{{ SITEURL }}/{{ article.prev_article.url}}">&larr;
+                    {{ article.prev_article.title }}
+                </a>
+            </li>
+        {% endif %}
+        {% if article.next_article %}
+            <li class="next">
+                <a href="{{ SITEURL }}/{{ article.next_article.url}}">
+                    {{ article.next_article.title }}&rarr;
+                </a>
+            </li>
+        {% endif %}
+        </ul>
+</section>
+
+</div>
+{% endblock %}

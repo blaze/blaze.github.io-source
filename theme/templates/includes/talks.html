@@ -1,0 +1,12 @@
+<div class="container">
+    <section id="content">
+        <header  class="header">
+            <h2 class="blogpost-title">Talks</h2>
+        </header>
+        <ul>
+        	{% for child in page.children %}
+                <li><a href='{{ SITEURL }}/{{ child.url }}'>{{ child.title }}</a>, {{child.conference}}, {{child.speaker}}</li>
+            {% endfor %}
+        </ul>
+    </section>
+</div>

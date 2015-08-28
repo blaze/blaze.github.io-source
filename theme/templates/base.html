@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>{{ SITENAME }}</title>
+  <meta name="description" content="{{ DESCRIPTION }}">
+  <meta name="author" content="{{ AUTHOR }}">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href='//fonts.googleapis.com/css?family=Raleway:100,200,300,400,600' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/normalize.css">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/skeleton.css">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/custom.css">
+
+  <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script type='text/javascript'>
+  $(function() {
+      $('pre').addClass('prettyprint');
+  });
+</script>
+  <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/github-prettify-theme.css">
+  <script src="{{ SITEURL }}/theme/js/site.js"></script>
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="{{ SITEURL }}/theme/images/favicon.ico">
+
+</head>
+<body class="code-snippets-visible">
+
+    <div class="navbar-spacer"></div>
+    <nav class="navbar">
+      <div class="container">
+        <ul class="navbar-list">
+          <li class="navbar-item"><a class="navbar-link" href="{{ SITEURL }}">Home</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="{{ SITEURL }}/pages/overview">Overview</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="{{ SITEURL }}/pages/projects">Projects</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="{{ SITEURL }}/pages/talks">Talks</a>
+          <li class="navbar-item"><a class="navbar-link" href="{{ SITEURL }}/pages/examples">Examples</a>
+          <li class="navbar-item"><a class="navbar-link" href="{{ SITEURL }}/pages/team">Team</a></li>
+          <li class="navbar-item"><a class="navbar-link" href="{{ SITEURL }}/archives">Blog</a></li>
+        </ul>
+        <div>
+            <a class="navbar-link" href="{{ SITEURL }}/"><img src="{{ SITEURL }}/images/blaze_med.png" class="site-icon"></a>
+        </div>
+      </div>
+    </nav>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+{% block content %}
+{% endblock content %}
+
+<br>
+
+  <!-- Google Analytics -->
+  <script type="text/javascript">
+  </script>
+
+<footer class="footer"></footer>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+{% include 'includes/ga.html' %}
+</html>

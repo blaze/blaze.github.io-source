@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+    <section id="content">
+        <header  class="header">
+            <h2 class="blogpost-title">Articles in {{ SITENAME }}</h2>
+        </header>
+        <dl>
+        	{% for category, articles in categories %}
+                <h3>{{ category }}</h3>
+            	{% for article in dates %}
+            		{% if (article.category==category) %}
+                	<dt>{{ article.locale_date }}</dt>
+                	<dd><a href='{{ article.url }}'>{{ article.title }}</a></dd>
+                	{% endif %}
+            	{% endfor %}
+            {% endfor %}
+        </dl>
+    </section>
+</div>
+{% endblock %}

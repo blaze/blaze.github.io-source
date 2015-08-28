@@ -1,0 +1,5 @@
+{% if article.tags %}
+{% for tag in article.tags %}
+	<a class = "label-default" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+{% endfor %}
+{% endif %}

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if page.parent == None %}
+    {% if page.title == 'Projects' %}
+        {% include 'includes/projects.html' %}
+    {% endif %}
+
+    {% if page.title == 'Talks' %}
+        {% include 'includes/talks.html' %}
+    {% endif %}
+
+    {% if page.title == 'Overview' %}
+        {% include 'includes/overview.html' %}
+    {% endif %}
+
+{% endif %}
+
+
+{% if page.parent.title == 'Projects' %}
+<div class="container">
+    <section id="content">
+                <header class="header">
+                    <a href="{{ SITEURL }}/{{ page.url }}"
+                       rel="bookmark"
+                       title="{{ page.title|striptags }}">
+                        <h2 class="blogpost-title">{{ page.title }}</h2>
+                    </a>
+                </header>
+                <div>
+                {{ page.content }}
+                </div>
+    </section>
+</div>
+
+{% elif page.parent.title == 'Talks' %}
+<div class="container">
+    <section id="content">
+                <header class="header">
+                    <a href="{{ SITEURL }}/{{ page.url }}"
+                       rel="bookmark"
+                       title="{{ page.title|striptags }}">
+                        <h2 class="blogpost-title">{{ page.title }}</h2>
+                        <h3>{{ page.conference }}, {{ page.speaker }}</h3>
+                    </a>
+                </header>
+                <div>
+                    {{ page.content }}
+                    <h4>Video:</h4>
+                    <iframe width="854" height="480" src="{{page.video}}" frameborder="1" allowfullscreen></iframe>
+
+                    {% if page.slides %}
+                    <h4>Slides:</h4>
+                    <iframe width="854" height="480" src="{{page.slides}}" frameborder="1" allowfullscreen></iframe>
+                    {% endif %}
+                    <h4>URL:</h4>
+                    <a href='{{page.site}}'>{{page.site}}</a>
+
+                </div>
+    </section>
+    <br>
+</div>
+
+{% else %}
+    <div>
+        {{ page.parent.title }}
+    </div>
+{% endif %}
+{% endblock %}

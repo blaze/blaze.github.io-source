@@ -1,13 +1,57 @@
+.text_cell .prompt {
+    display: none;
+  }
+
+div.cell {
+    padding: 0;
+}
+
+div.text_cell_render {
+    padding: 0;
+}
+
+div.prompt {
+    font-size: 13px;
+}
+
+div.input_prompt {
+    padding: .7em 0.2em;
+}
+
+div.output_prompt {
+    padding: .4em .2em;
+}
+
+div.input_area {
+    margin: .2em 0.4em;
+}
+
+table.dataframe {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+table.dataframe th, td {
+    padding: 4px;
+    text-align: left;
+}
+
 body{
  font-size: 18px;
 }
+
 .button.button-primary{
  background-color: #23A1E4;
 }
+
 .blogpost-title{
  color: #23A1E4;
  font-family: 'Raleway', cursive;
+ margin-right: 10%;
+ margin-left: 10%;
 }
+
 .article-info{
 padding: 0.5%;
 border-radius: 6px;

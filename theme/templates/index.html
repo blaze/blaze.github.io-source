@@ -29,32 +29,48 @@
         </div>
     </section>
 
-    {% if articles %}
-    <section class="home-section">
-        <h3 class="home-header">Recent blog posts</h3>
-        <div>
-            {% for article in (articles_page.object_list if articles_page else articles) %}
-            <div class="home-post">
-                <p class="blogpost-date" style="float:right">{{article.locale_date}}</p>
-                <h5><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h5>
-                <p>{{ article.summary }}</p>
-            </div>
-            {% endfor %}
-            <div class="row">
-                <a class="button button-primary button-more" href="{{ SITEURL }}/archives">More...</a>
-            </div>
-        </div>
-    </section>
-    {% endif %}
 
-    <br>
+    <section class="home-section">
+      <h3 class="home-header">Recent blog posts</h3>
+      {% for article in articles_page.object_list %}
+      <article class="home-post">
+        <header>
+          <time datetime="" title="{{ article.date.isoformat() }}" pubdate style="float:right" class="blogpost-date">{{ article.locale_date }}</time>
+          <br>
+          <h5><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h5>
+          <h6>by {{ article.author }}</h6>
+        </header>
+
+        <div class="article_content">
+          {{ article.summary }}
+        </div>
+
+        <div class="meta">
+          <div>
+            <a class="button button-primary button-more" href="{{ SITEURL }}/{{ article.url }}">Read</a>
+          </div>
+
+          <div>
+              {% for tag in article.tags %}
+                <a class="label-default" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+              {% endfor %}
+          </div>
+
+        </div>
+
+      </article>
+      <div class="separator"></div>
+      {% endfor %}
+
+
+  <br>
 
      <section class="home-section">
         <h2 class="home-header">Talks and Tutorials</h2>
             <div class="row">
               {% for page in pages %}
                   {% if page.title == 'Talks' %}
-                      {% for children_page in page.children[-2:] %}
+                      {% for children_page in page.children[-3:] %}
                           <h5 class="talk-header"><a href="{{ SITEURL }}/{{ children_page.url }}">{{ children_page.title }}</a></h5>
                           <p><b>{{children_page.conference}}</b>, {{children_page.speaker}}</p>
                       {% endfor %}
@@ -62,7 +78,7 @@
               {% endfor %}
             </div>
             <div class="row">
-                <a class="button button-primary button-more" href="{{ SITEURL }}/pages/talks">More...</a>
+                <a class="button button-primary button-more" href="{{ SITEURL }}/pages/talks">More</a>
             </div>
     </section>
 

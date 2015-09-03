@@ -14,8 +14,9 @@
                 <a href="{{ SITEURL }}/{{ article.url }}"
                    rel="bookmark"
                    title="Permalink to {{ article.title|striptags }}">
-                    <h2 class="blogpost-title">{{ article.title }}</h2>
+                 <h2 class="blogpost-title">{{ article.title }}</h2>
                 </a>
+                <h5>by {{ article.author }}</h5>
             </header>
             <div>
             {{ article.content }}

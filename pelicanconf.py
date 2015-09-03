@@ -36,3 +36,9 @@ SLUGIFY_SOURCE = 'basename'
 STATIC_PATHS = ['images']
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
+
+# ipynb plugin
+MARKUP = ('md', 'ipynb')
+
+ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
+ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'

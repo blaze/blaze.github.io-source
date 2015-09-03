@@ -38,7 +38,6 @@ The goal of the Blaze ecosystem is to simplify data processing for users by prov
 - Compressed column stores, called [**bcolz**](http://blaze.github.io/pages/projects/bcolz) and
 [**castra**](http://blaze.github.io/pages/projects/castra).
 - A parallel computational engine, called [**dask**](http://blaze.github.io/pages/projects/dask).
-- A
 
 
 ## Learn more

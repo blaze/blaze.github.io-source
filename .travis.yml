@@ -1,0 +1,23 @@
+branches:
+  only:
+  - master
+
+language: python
+
+python:
+  - 3.4
+
+install:
+  - pip install -r requirements.txt --use-mirrors
+
+script:
+  - make html
+
+notifications:
+  email: false
+
+env:
+  global:
+    secure: "UXv3bwYSC9sGezsTanuYrgqi/L4VWv3F7TaeZIbFmjC4PYnIJKQ5bmWNzGSXWE8NqSWK1HQ4dBnGvnTCmF8UP5lYPmFDK+NhD3sVFRKi7AkzVJ+GwyADNKkvVpA9O3pO+HCwWP3YW1ikHJq8XIvysHpZvNrTYeGLA/G7QU9Es8XRPGSFOMid6EHA8e1/Obkzf6kUA4B7WViqGcUejIoVMrzXVv9WiLbDNz0d0ciFW7HMWcxKkRUDSQSRDEQfK3t3xMFEP3Unw7sfT0sBGscuumafkZNZoK/TGUQUL0+Mynm25x7uwykllYQaX8TtvKouG6Wr/15zn7mU3hzBYbm/eaRS/8yG6B0bkdZE5b+BDRYCRxE8hsZIM3QVj67TFO2BUeD/McNZRrdoPHpwl+LcTROCnr/Bn/mFd3iKzULc89OEfa5fvr5APcpY64YqotidXVtWcrVh+Sddu1E6scH1YaSWbDJmEgDvUS7DDjfkVuZcwGGVhPzwKjh+90pBBPu/SRrUb0uCyxBJg+tNyMIFxd9nkXwVYN2Tr5PGqYa/qjgAbgRIXwPJ29NAH26EVU7LuCMOjbKxA3wU9szK7LJgnq3ZCXltcu7PNWCINugqw9U2TKFbppCnmZGB8JNdhOV8guK2uQexeg6vTQ3ms86y6HYURCaZ1CNgI3ryZlTKEDI="
+
+after_success: ./deploy.sh

@@ -45,4 +45,6 @@ ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 
 DISQUS_SITENAME = 'blaze-ecosystem'
 
+GOOGLE_ANALYTICS_CODE = 'UA-67320551-1'
+
 SUMMARY_MAX_LENGTH = 10

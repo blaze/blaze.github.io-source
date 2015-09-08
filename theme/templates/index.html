@@ -3,17 +3,15 @@
 {% block content %}
 
 <div class="container">
-    <section class="header">
-      <div><img src="{{ SITEURL }}/images/blaze.png"></div>
-      <h2 class="title">{{ TITLE }}</h2>
-      <h4 class="subtitle">{{ SUBTITLE }}</h4>
+    <section class="site-header">
+      <div><img class="header-logo" src="{{ SITEURL }}/images/blaze_med.png"><h2 class="title">{{ TITLE }}</h2></div>
     </section>
 
 
     <section class="home-section">
         <div class="row">
             <p>The Blaze ecosystem is a set of libraries that help users store, describe,
-            query and process data. It is composed of the following projects:</p>
+            query and process data. It is composed of the following core projects:</p>
         </div>
 
         <div class="row">
@@ -21,14 +19,15 @@
           {% for page in pages %}
               {% if page.title == 'Projects' %}
                   {% for children_page in page.children %}
-                      <li class="talk-header"><a href="{{ SITEURL }}/{{ children_page.url }}">{{ children_page.title }}</a>: {{children_page.subtitle}}</li>
-                  {% endfor %}
+                        {% if children_page.project == 'core' %}
+                        <li class="talk-header"><a href="{{ children_page.docs }}">{{ children_page.title }}</a>: {{children_page.subtitle}}</li>
+                        {% endif %}
+                {% endfor %}
               {% endif %}
           {% endfor %}
           </ul>
         </div>
     </section>
-
 
     <section class="home-section">
       <h3 class="home-header">Recent blog posts</h3>
@@ -42,12 +41,16 @@
         </header>
 
         <div class="article_content">
+
+          {% if article.image %}
+            <img class="blog-image" src="{{ SITEURL }}/images/{{article.image}}">
+          {% endif %}
           {{ article.summary }}
         </div>
 
         <div class="meta">
           <div>
-            <a class="button button-primary button-more" href="{{ SITEURL }}/{{ article.url }}">Read</a>
+            <a class="button button-primary button-read" href="{{ SITEURL }}/{{ article.url }}">Read</a>
           </div>
 
           <div>
@@ -66,16 +69,18 @@
   <br>
 
      <section class="home-section">
-        <h2 class="home-header">Talks and Tutorials</h2>
+        <h3 class="home-header">Talks and Tutorials</h3>
             <div class="row">
+                <ul>
               {% for page in pages %}
                   {% if page.title == 'Talks' %}
                       {% for children_page in page.children[-3:] %}
-                          <h5 class="talk-header"><a href="{{ SITEURL }}/{{ children_page.url }}">{{ children_page.title }}</a></h5>
-                          <p><b>{{children_page.conference}}</b>, {{children_page.speaker}}</p>
+                          <li><p class="talk-header"><a href="{{ SITEURL }}/{{ children_page.url }}">{{ children_page.title }}</a>
+                          <br><b>{{children_page.conference}}</b>, {{children_page.speaker}}</p>    </li>
                       {% endfor %}
                   {% endif %}
               {% endfor %}
+                </ul>
             </div>
             <div class="row">
                 <a class="button button-primary button-more" href="{{ SITEURL }}/pages/talks">More</a>

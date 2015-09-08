@@ -44,3 +44,5 @@ ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
 ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 
 DISQUS_SITENAME = 'blaze-ecosystem'
+
+SUMMARY_MAX_LENGTH = 10

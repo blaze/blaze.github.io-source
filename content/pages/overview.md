@@ -31,7 +31,7 @@ The goal of the Blaze ecosystem is to simplify data processing for users by prov
 
 - A common language to describe data that it's independent of the Data Processing System, called
 [**datashape**](http://blaze.github.io/pages/projects/datashape).
-- A common interface to query data that it's independent of the Data Processing System, called
+- A common interface to query data that     it's independent of the Data Processing System, called
 [**blaze**](http://blaze.github.io/pages/projects/blaze).
 - A common utility library to move data from one format or system to another, called
 [**odo**](http://blaze.github.io/pages/projects/odo).
@@ -42,7 +42,5 @@ The goal of the Blaze ecosystem is to simplify data processing for users by prov
 
 ## Learn more
 
-Learn how the projects in the Blaze Ecosystem can help you in the
-[examples](http://blaze.github.io/pages/examples) section and our [blog](http://blaze.github.io/archives). The project
-repositories can be found under the [Github Blaze Organization](https://github.com/blaze). Feel free to reach out to the
-Blaze Developers through our mailing list, blaze-dev@continuum.io.
+The project repositories can be found under the [Github Blaze Organization](https://github.com/blaze). Feel free to
+reach out to the Blaze Developers through our mailing list, blaze-dev@continuum.io.

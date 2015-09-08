@@ -1,3 +1,5 @@
 Title: Blaze
+Project: core
 Category: Projects
-Subtitle: interface to query data on different storage systems
+Subtitle: An interface to query data on different storage systems
+Docs: http://blaze.pydata.org/en/latest/index.html

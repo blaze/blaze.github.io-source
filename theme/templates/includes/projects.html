@@ -5,7 +5,7 @@
         </header>
         <dl>
         	{% for child in page.children %}
-                <dd><a href='{{ SITEURL }}/{{ child.url }}'>{{ child.title }}</a></dd>
+                <dd><a href='{{ child.docs }}'>{{ child.title }}</a></dd>
             {% endfor %}
         </dl>
     </section>

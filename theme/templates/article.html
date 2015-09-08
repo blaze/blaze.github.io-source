@@ -20,12 +20,15 @@
             </header>
             <div>
             {{ article.content }}
+
+             {% include 'includes/comments.html' %}
             </div>
+
             <div class="article-info">
             {% include 'includes/article_info.html' %}
             </div>
             <!-- /.entry-content -->
-            {% include 'includes/comments.html' %}
+
         </article>
 
         <ul class="pager">

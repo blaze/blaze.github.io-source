@@ -33,7 +33,7 @@ PAGE_URL = '{slug}/'
 PAGE_SAVE_AS = '{slug}/{slug}.html'
 SLUGIFY_SOURCE = 'basename'
 
-STATIC_PATHS = ['images']
+STATIC_PATHS = ['images', 'CNAME']
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 

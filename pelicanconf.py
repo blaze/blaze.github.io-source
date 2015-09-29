@@ -11,7 +11,6 @@ SUBTITLE = 'Connecting people to data'
 PATH = 'content'
 
 THEME = 'theme/'
-
 TIMEZONE = 'UTC'
 
 DEFAULT_LANG = u'en'

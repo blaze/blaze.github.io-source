@@ -20,6 +20,10 @@ pre {
 
 p {margin: 0px 0px 9px;}
 
+.output_png img{
+    width: 100%;
+}
+
 .rendered_html ul{
     margin: 0em 2em;
     padding-left: 0px;

@@ -48,21 +48,19 @@ local process with the `.result()` method:
 Data Locality
 -------------
 
-However we don't want to move data with the `.result` method if we can avoid it.
+However, we don't want to do this; moving data from remote workers to the local
+process is expensive.  We avoid calling `.result()`.
 
 By default the result of the computation (`2`) stays on the remote computer
-where the computation occurred.  Data transfer often becomes the bottleneck so
-we avoid calling `.result()` whenever possible.
-
-We avoid data transfer by allowing `submit` calls to directly accept futures as
-arguments:
+where the computation occurred.  We avoid data transfer by allowing `submit`
+calls to directly accept futures as arguments:
 
 ```python
 >>> y = executor.submit(inc, x)  # no need to call x.result()
 ```
 
-
-This deviates from the `concurrent.futures` API where we would wait on `x`
+The computation for `y` will happen on the same machine where `x` lives.  This
+interface deviates from `concurrent.futures` where we would have to wait on `x`
 before submiting `y`.  We no longer have to do the following:
 
 ```python
@@ -81,19 +79,20 @@ Ad hoc computations
 -------------------
 
 For ad-hoc computations we often want the fine-grained control that a simple
-`.submit(func, *args)` function provides.  Ad-hoc computations often have
-various function calls that depend on each other in various strange ways; they
-don't fit a particular model or framework.
+and efficient `executor.submit(func, *args)` function provides.  Ad-hoc
+computations often have various function calls that depend on each other in
+strange ways; they don't fit a particular model or framework.
 
-We don't need this fine-grained control if we're just parsing JSON and loading
-it into a database.  In this case bulk operations like `map` and `reduce`
-provided by MapReduce or Spark are often sufficient.
+We don't need this fine-grained control for typical embarrassingly parallel
+work, like parsing JSON and loading it into a database.  In these typical cases
+the bulk operations like `map` and `reduce` provided by MapReduce or Spark fit
+well.
 
-However when our computations aren't straightforward and they don't fit nicely
-into a framework then we're stuck performing `groupby` and `join` gymnastics
-over strange key naming schemes to coerce our problem into the MapReduce or
-Spark programming model.  If we're not operating at the peta-byte scale then
-these programming models might be overkill.
+However when computations aren't straightforward and don't fit nicely into a
+framework then we're stuck performing `groupby` and `join` gymnastics over
+strange key naming schemes to coerce our problem into the MapReduce or Spark
+programming models.  If we're not operating at the petabyte scale then these
+programming models might be overkill.
 
 The `.submit` function has an overhead of about a millisecond per call (not
 counting network latency).  This might be crippling at the petabyte scale, but
@@ -110,14 +109,14 @@ arrays.
 
 This is the kind of algorithm you would find hard-coded into a library like
 [Spark](http://spark.apache.org/) or
-[dask.array](http://dask.pydata.org/en/latest/array.html)/[dataframe](http://dask.pydata.org/en/latest/dataframe.html)
+[dask.array](http://dask.pydata.org/en/latest/array.html)/[dask.dataframe](http://dask.pydata.org/en/latest/dataframe.html)
 but that we can accomplish by hand with some for loops while still using
 parallel distributed computing.  The difference here is that we're not limited
 to the algorithms chosen for us and can screw around more freely.
 
     finish           total             single array output
         ^          /        \
-        |        z1          z2
+        |        z1          z2        neighbors merge
         |       /  \        /  \
         |     y1    y2    y3    y4     neighbors merge
         ^    / \   / \   / \   / \
@@ -158,8 +157,8 @@ Notes
 Various other Python frameworks provide distributed function evaluation.  A few
 are listed [here](http://distributed.readthedocs.org/en/latest/related-work.html)
 .  Notably we're stepping on the toes of
-[SCOOP](http://scoop.readthedocs.org/en/0.7/), which also provides a
-distributed `concurrent.futures` interface.
+[SCOOP](http://scoop.readthedocs.org/en/0.7/), an excellent library that also
+provides a distributed `concurrent.futures` interface.
 
 The `distributed` project could use a more distinct name.  Any suggestions?
 

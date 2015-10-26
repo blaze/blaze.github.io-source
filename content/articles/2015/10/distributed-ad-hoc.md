@@ -23,28 +23,24 @@ concurrent.futures interface
 
 The `distributed.Executor` interface mimics the `concurrent.futures` stdlib package.
 
-```
-:::python
-from distributed import Executor
-executor = Executor('192.168.1.124:8787')  # address of center-node in cluster
+    :::python
+    from distributed import Executor
+    executor = Executor('192.168.1.124:8787')  # address of center-node in cluster
 
-def inc(x):
-    return x + 1
+    def inc(x):
+        return x + 1
 
->>> x = executor.submit(inc, 1)
->>> x
-<Future: status: waiting, key: inc-8bca9db48807c7d8bf613135d01b875f>
-```
+    >>> x = executor.submit(inc, 1)
+    >>> x
+    <Future: status: waiting, key: inc-8bca9db48807c7d8bf613135d01b875f>
 
 The submit call executes `inc(1)` on a remote machine.  The returned future
 serves as a proxy to the remote result.  We can collect this result back to the
 local process with the `.result()` method:
 
-```
-:::python
->>> x.result()  # transfers data from remote to local process
-2
-```
+    :::python
+    >>> x.result()  # transfers data from remote to local process
+    2
 
 
 Data Locality
@@ -59,18 +55,14 @@ we avoid calling `.result()` whenever possible.
 We avoid data transfer by allowing `submit` calls to directly accept futures as
 arguments:
 
-```
-:::python
->>> y = executor.submit(inc, x)  # no need to call x.result()
-```
+    :::python
+    >>> y = executor.submit(inc, x)  # no need to call x.result()
 
 This deviates from the `concurrent.futures` API where we would wait on `x`
 before submiting `y`.  We no longer have to do the following:
 
-```
-:::python
->>> y = executor.submit(inc, x.result())  # old concurrent.futures API
-```
+    :::python
+    >>> y = executor.submit(inc, x.result())  # old concurrent.futures API
 
 This is useful for two reasons:
 
@@ -128,29 +120,23 @@ to the algorithms chosen for us and can screw around more freely.
 
 *  Make sixteen, million element random arrays on the cluster:
 
-```
-:::python
-import numpy as np
-xs = executor.map(np.random.random, [1000000] * 16, pure=False)
-```
+    :::python
+    import numpy as np
+    xs = executor.map(np.random.random, [1000000] * 16, pure=False)
 
 *  Add neighbors until there is only one left:
 
-```
-:::python
-while len(xs) > 1:
-    xs = [executor.submit(add, xs[i], xs[i + 1])
-          for i in range(0, len(xs), 2)]
-```
+    :::python
+    while len(xs) > 1:
+        xs = [executor.submit(add, xs[i], xs[i + 1])
+              for i in range(0, len(xs), 2)]
 
 *  Fetch final result:
 
-```
-:::python
->>> xs[0].result()
-array([  2.069694  ,   9.01727599,   5.42682524, ...,   0.42372487,
-         1.50364966,  13.48674896])
-```
+    :::python
+    >>> xs[0].result()
+    array([  2.069694  ,   9.01727599,   5.42682524, ...,   0.42372487,
+             1.50364966,  13.48674896])
 
 This entire computation, from writing the code to receiving the answer takes
 well under a second on a small cluster.  This isn't surprising, it's a very

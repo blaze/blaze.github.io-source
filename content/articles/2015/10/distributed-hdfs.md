@@ -55,16 +55,16 @@ So we put a dataset on an HDFS instance:
 
 and we query the namenode to find out what just happened.
 
-Java project just use the HDFS Java library.  We'd like to avoid JVM dependence
-so instead we depend on Spotify's
+Java projects use the HDFS Java library.  We avoid JVM dependence and so
+instead use Spotify's
 [snakebite](http://snakebite.readthedocs.org/en/latest/) library, which
-includes the Protobuf headers necessary to interact with the namenode.
+includes the Protobuf headers necessary to interact with the namenode directly.
 
-The library code within Snakebite doesn't support exactly this query, and so
-we use their protobuf headers and some write custom code (written by
-[Ben Zaitlen](https://github.com/quasiben) and
-[Martin Durant](https://github.com/martindurant/)) available
-[here](https://github.com/mrocklin/distributed/blob/master/distributed/hdfs.py).
+The library code within Snakebite doesn't support our desired queries, and so
+we use their protobuf headers to write custom code available
+[here](https://github.com/mrocklin/distributed/blob/master/distributed/hdfs.py)
+(work done by [Ben Zaitlen](https://github.com/quasiben) and
+[Martin Durant](https://github.com/martindurant/)).
 
 ```python
 >>> from distributed import hdfs
@@ -83,14 +83,15 @@ $ head filename TODO
 TODO
 ```
 
-Once we have block locations on the host file system we ditch HDFS altogether
-and revert to our normal model of the world.
+Once we have block locations on the host file system we ditch HDFS and just
+think about remote hosts that have files on their local file systems.  HDFS has
+played its part and can exit the stage.
 
 
 Data-local tasks with distributed
 ---------------------------------
 
-So lets load all of these blocks with Pandas and distributed.
+We load these blocks with `pandas` and `distributed`.
 
 ```python
 >>> columns = [TODO]
@@ -104,16 +105,14 @@ So lets load all of these blocks with Pandas and distributed.
 
 We use the `workers=` keyword argument to `Executor.submit` to restrict these
 jobs so that they can only run on the hosts whose local file systems actually
-hold these paths.  Also, because only the first block will have column
-information we've had to provide keyword arguments directly to the
-`pd.read_csv` call.
+hold these paths.  Also, because only the first block will have the CSV header
+we provide keyword arguments directly to the `pd.read_csv` call.
 
 
 Some simple analysis
 --------------------
 
-We can now do some simple work, like counting all of the passenger counts
-values.
+We now do some simple work, counting all of the passenger counts values.
 
 ```python
 >>> counts = executor.map(lambda df: df.passenger_count.value_counts(), dfs)
@@ -122,18 +121,23 @@ values.
 TODO
 ```
 
+We see that TODO...
+
 
 Conclusion
 ----------
 
 We used `snakebite`'s protobuf definitions and `distributed`'s data-local task
-scheduling to run Pandas directly on CSV data in HDFS.  Our approach wasn't
-elegant or streamlined but it also wasn't terribly complex.  None of Snakebite,
-distributed, nor Pandas was designed for this use case and yet we were able to
-compose them together to achieve something that previously only monolithic
-frameworks (Hadoop, Spark, Impala) have managed.  HDFS no longer feels like
-"big data magic"; it's just a way that big files get split up into smaller
-files on many machines that we need to track down to run our normal toolset.
+scheduling to run Pandas directly on CSV data in HDFS.  We didn't touch the JVM
+nor did we invent a whole new framework but instead reused existing components.
+
+Our approach wasn't elegant or streamlined but it also wasn't terribly complex.
+None of Snakebite, distributed, nor Pandas was designed for this use case and
+yet we were able to compose them together to achieve something that previously
+only monolithic frameworks (Hadoop, Spark, Impala) have managed.  HDFS no
+longer feels like "big data magic"; it's just a way that big files get split up
+into smaller files on many machines that we need to track down to run our
+normal toolset.
 
 That's not to disparage frameworks or elegant streamlined approaches.  If
 enough people care about this sort of thing then I may hook up

@@ -51,7 +51,7 @@ Query Block Locations with Snakebite
 
 So we put a dataset on an HDFS instance:
 
-    $ hdfs cp nyctaxi.csv /data/nyctaxi/   TODO
+    $ hdfs dfs -cp yellow_tripdata_2014-01.csv /data/nyctaxi/
 
 and we query the namenode to find out what just happened.
 
@@ -68,9 +68,62 @@ we use their protobuf headers to write custom code available
 
 ```python
 >>> from distributed import hdfs
->>> blocks = hdfs.get_locations('/data/nyctaxi/', '192.168.1.100', 9000):
+>>> blocks = hdfs.get_locations('/data/nyctaxi/', '192.168.50.100', 9000)
 >>> blocks
-TODO
+[{'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd5819c9b0>,
+  'hosts': [u'192.168.50.101', u'192.168.50.105', u'192.168.50.107'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741826'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd5819cd70>,
+  'hosts': [u'192.168.50.101', u'192.168.50.105', u'192.168.50.107'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741827'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580b4230>,
+  'hosts': [u'192.168.50.105', u'192.168.50.107', u'192.168.50.101'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741828'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580b4668>,
+  'hosts': [u'192.168.50.101', u'192.168.50.105', u'192.168.50.107'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741829'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580b4aa0>,
+  'hosts': [u'192.168.50.107', u'192.168.50.105', u'192.168.50.101'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741830'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580b4ed8>,
+  'hosts': [u'192.168.50.107', u'192.168.50.105', u'192.168.50.101'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741831'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580d7398>,
+  'hosts': [u'192.168.50.105', u'192.168.50.107', u'192.168.50.101'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741832'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580d77d0>,
+  'hosts': [u'192.168.50.101', u'192.168.50.107', u'192.168.50.105'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741833'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580d7c08>,
+  'hosts': [u'192.168.50.105', u'192.168.50.101', u'192.168.50.107'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741834'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580a60c8>,
+  'hosts': [u'192.168.50.107', u'192.168.50.101', u'192.168.50.105'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741835'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580a6500>,
+  'hosts': [u'192.168.50.101', u'192.168.50.105', u'192.168.50.107'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741836'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580a6938>,
+  'hosts': [u'192.168.50.107', u'192.168.50.105', u'192.168.50.101'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741837'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580a6d70>,
+  'hosts': [u'192.168.50.107', u'192.168.50.101', u'192.168.50.105'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741838'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580bf230>,
+  'hosts': [u'192.168.50.107', u'192.168.50.105', u'192.168.50.101'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741839'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580bf668>,
+  'hosts': [u'192.168.50.107', u'192.168.50.105', u'192.168.50.101'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741840'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580bfaa0>,
+  'hosts': [u'192.168.50.107', u'192.168.50.101', u'192.168.50.105'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741841'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580bfed8>,
+  'hosts': [u'192.168.50.101', u'192.168.50.105', u'192.168.50.107'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741842'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd5811c398>,
+  'hosts': [u'192.168.50.105', u'192.168.50.101', u'192.168.50.107'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741843'}]
 ```
 
 So we see that our single file, TODO, has been turned into many small
@@ -78,9 +131,18 @@ files/blocks, each of which is replicated across three machines.  We can even
 go and inspect these blocks.
 
 ```
-$ ssh hostname  TODO
-$ head filename TODO
-TODO
+$ ssh hdfs@192.168.50.101
+hdfs@compute2:/home/vagrant$ head /data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741826
+vendor_id, pickup_datetime, dropoff_datetime, passenger_count, trip_distance, pickup_longitude, pickup_latitude, rate_code, store_and_fwd_flag, dropoff_longitude, dropoff_latitude, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
+
+CMT,2014-01-09 20:45:25,2014-01-09 20:52:31,1,0.69999999999999996,-73.994770000000003,40.736828000000003,1,N,-73.982226999999995,40.731789999999997,CRD,6.5,0.5,0.5,1.3999999999999999,0,8.9000000000000004
+CMT,2014-01-09 20:46:12,2014-01-09 20:55:12,1,1.3999999999999999,-73.982392000000004,40.773381999999998,1,N,-73.960448999999997,40.763995000000001,CRD,8.5,0.5,0.5,1.8999999999999999,0,11.4
+CMT,2014-01-09 20:44:47,2014-01-09 20:59:46,2,2.2999999999999998,-73.988569999999996,40.739406000000002,1,N,-73.986626000000001,40.765217,CRD,11.5,0.5,0.5,1.5,0,14
+CMT,2014-01-09 20:44:57,2014-01-09 20:51:40,1,1.7,-73.960212999999996,40.770463999999997,1,N,-73.979862999999995,40.777050000000003,CRD,7.5,0.5,0.5,1.7,0,10.199999999999999
+CMT,2014-01-09 20:47:09,2014-01-09 20:53:32,1,0.90000000000000002,-73.995371000000006,40.717247999999998,1,N,-73.984367000000006,40.720523999999997,CRD,6,0.5,0.5,1.75,0,8.75
+CMT,2014-01-09 20:45:07,2014-01-09 20:51:01,1,0.90000000000000002,-73.983811000000003,40.749654999999997,1,N,-73.989746999999994,40.756574999999998,CRD,6,0.5,0.5,1.3999999999999999,0,8.4000000000000004
+CMT,2014-01-09 20:44:04,2014-01-09 21:05:45,1,3.6000000000000001,-73.984138000000002,40.726317000000002,1,N,-73.962868999999998,40.758443,CRD,16.5,0.5,0.5,5.25,0,22.75
+CMT,2014-01-09 20:43:23,2014-01-09 20:52:07,1,2.1000000000000001,-73.979906,40.745849999999997,1,N,-73.959090000000003,40.773639000000003,CRD,9,0.5,0.5,2,0,12
 ```
 
 Once we have block locations on the host file system we ditch HDFS and just
@@ -94,7 +156,11 @@ Data-local tasks with distributed
 We load these blocks with `pandas` and `distributed`.
 
 ```python
->>> columns = [TODO]
+>>> columns = ['vendor_id', 'pickup_datetime', 'dropoff_datetime',
+ 'passenger_count', 'trip_distance', 'pickup_longitude', 'pickup_latitude',
+ 'rate_code', 'store_and_fwd_flag', 'dropoff_longitude', 'dropoff_latitude',
+ 'payment_type', 'fare_amount', 'surcharge', 'mta_tax', 'tip_amount',
+ 'tolls_amount', 'total_amount']
 
 >>> from distributed import Executor
 >>> executor = Executor('192.168.1.100:8787')
@@ -121,7 +187,7 @@ We now do some simple work, counting all of the passenger counts values.
 TODO
 ```
 
-We see that TODO...
+Looking at these results we see that ... (TODO)
 
 
 Conclusion

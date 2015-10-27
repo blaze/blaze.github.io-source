@@ -70,65 +70,65 @@ we use their protobuf headers to write custom code available
 >>> from distributed import hdfs
 >>> blocks = hdfs.get_locations('/data/nyctaxi/', '192.168.50.100', 9000)
 >>> blocks
-[{'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd5819c9b0>,
-  'hosts': [u'192.168.50.101', u'192.168.50.105', u'192.168.50.107'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741826'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd5819cd70>,
-  'hosts': [u'192.168.50.101', u'192.168.50.105', u'192.168.50.107'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741827'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580b4230>,
-  'hosts': [u'192.168.50.105', u'192.168.50.107', u'192.168.50.101'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741828'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580b4668>,
-  'hosts': [u'192.168.50.101', u'192.168.50.105', u'192.168.50.107'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741829'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580b4aa0>,
-  'hosts': [u'192.168.50.107', u'192.168.50.105', u'192.168.50.101'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741830'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580b4ed8>,
-  'hosts': [u'192.168.50.107', u'192.168.50.105', u'192.168.50.101'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741831'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580d7398>,
-  'hosts': [u'192.168.50.105', u'192.168.50.107', u'192.168.50.101'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741832'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580d77d0>,
+[{'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac15bb90>,
+  'hosts': [u'192.168.50.106', u'192.168.50.107', u'192.168.50.105'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741844'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac15bf50>,
+  'hosts': [u'192.168.50.106', u'192.168.50.107', u'192.168.50.101'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741845'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac15d410>,
+  'hosts': [u'192.168.50.107', u'192.168.50.101', u'192.168.50.106'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741846'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac15d848>,
+  'hosts': [u'192.168.50.107', u'192.168.50.106', u'192.168.50.105'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741847'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac15dc80>,
+  'hosts': [u'192.168.50.106', u'192.168.50.105', u'192.168.50.107'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741848'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac16b140>,
+  'hosts': [u'192.168.50.107', u'192.168.50.101', u'192.168.50.106'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741849'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac16b578>,
+  'hosts': [u'192.168.50.105', u'192.168.50.107', u'192.168.50.106'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741850'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac16b9b0>,
+  'hosts': [u'192.168.50.106', u'192.168.50.107', u'192.168.50.105'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741851'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac16bde8>,
+  'hosts': [u'192.168.50.107', u'192.168.50.106', u'192.168.50.101'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741852'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac1772a8>,
   'hosts': [u'192.168.50.101', u'192.168.50.107', u'192.168.50.105'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741833'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580d7c08>,
-  'hosts': [u'192.168.50.105', u'192.168.50.101', u'192.168.50.107'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741834'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580a60c8>,
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741853'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac1776e0>,
+  'hosts': [u'192.168.50.105', u'192.168.50.107', u'192.168.50.101'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741854'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac177b18>,
+  'hosts': [u'192.168.50.101', u'192.168.50.105', u'192.168.50.106'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741855'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac177f50>,
+  'hosts': [u'192.168.50.106', u'192.168.50.107', u'192.168.50.105'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741856'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac105410>,
   'hosts': [u'192.168.50.107', u'192.168.50.101', u'192.168.50.105'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741835'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580a6500>,
-  'hosts': [u'192.168.50.101', u'192.168.50.105', u'192.168.50.107'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741836'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580a6938>,
-  'hosts': [u'192.168.50.107', u'192.168.50.105', u'192.168.50.101'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741837'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580a6d70>,
-  'hosts': [u'192.168.50.107', u'192.168.50.101', u'192.168.50.105'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741838'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580bf230>,
-  'hosts': [u'192.168.50.107', u'192.168.50.105', u'192.168.50.101'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741839'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580bf668>,
-  'hosts': [u'192.168.50.107', u'192.168.50.105', u'192.168.50.101'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741840'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580bfaa0>,
-  'hosts': [u'192.168.50.107', u'192.168.50.101', u'192.168.50.105'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741841'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd580bfed8>,
-  'hosts': [u'192.168.50.101', u'192.168.50.105', u'192.168.50.107'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741842'},
- {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7fbd5811c398>,
-  'hosts': [u'192.168.50.105', u'192.168.50.101', u'192.168.50.107'],
-  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741843'}]
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741857'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac105848>,
+  'hosts': [u'192.168.50.107', u'192.168.50.106', u'192.168.50.101'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741858'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac105c80>,
+  'hosts': [u'192.168.50.106', u'192.168.50.101', u'192.168.50.107'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741859'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac113140>,
+  'hosts': [u'192.168.50.106', u'192.168.50.107', u'192.168.50.105'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741860'},
+ {'block': <snakebite.protobuf.hdfs_pb2.LocatedBlockProto at 0x7f56ac113578>,
+  'hosts': [u'192.168.50.101', u'192.168.50.105', u'192.168.50.106'],
+  'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741861'}]
 ```
 
-So we see that our single file, TODO, has been turned into many small
-files/blocks, each of which is replicated across three machines.  We can even
-go and inspect these blocks.
+So we see that our single file, `yellow_tripdata_2014-01.csv`, has been turned
+into many small files/blocks, each of which is replicated across three
+machines.  We can even go and inspect these blocks.
 
 ```
 $ ssh hdfs@192.168.50.101
@@ -165,7 +165,7 @@ We load these blocks with `pandas` and `distributed`.
 >>> from distributed import Executor
 >>> executor = Executor('192.168.1.100:8787')
 >>> dfs = [executor.submit(pd.read_csv, block['path'], workers=block['hosts'],
-...                        columns=columns, skipinitialspace=True)
+...                        columns=columns, skiprows=1)
 ...        for block in blocks]
 ```
 
@@ -175,19 +175,47 @@ hold these paths.  Also, because only the first block will have the CSV header
 we provide keyword arguments directly to the `pd.read_csv` call.
 
 
+Or alternatively we've wrapped up both steps into a little convenience function:
+
+```python
+>>> from distributed import hdfs
+>>> dfs = hdfs.map_blocks(executor, pd.read_csv, '/data/nyctaxi/',
+...                       '192.168.50.100', 9000,
+...                       columns=columns, skiprows=1)
+```
+
+
 Some simple analysis
 --------------------
 
 We now do some simple work, counting all of the passenger counts values.
 
 ```python
+def sum_series(seq):
+    result = seq[0]
+    for s in seq[1:]:
+        result = result.add(s, fill_value=0)
+    return result
+
 >>> counts = executor.map(lambda df: df.passenger_count.value_counts(), dfs)
 >>> total = executor.submit(sum, counts)
 >>> total.result()
-TODO
+0          259
+1      9727301
+2      1891581
+3       566248
+4       267540
+5       789070
+6       540444
+7            7
+8            5
+9           16
+208         19
 ```
 
-Looking at these results we see that ... (TODO)
+Looking at these results we see that as is expected, most rides have a single
+passenger.  There are a few oddities like many rides with zero passengers, a
+ride with 208 passengers, and an unexpected spike at five passengers.
 
 
 Conclusion
@@ -217,8 +245,8 @@ I'm pretty ignorant when it comes to the JVM HDFS stack.  It'd be great to find
 some people out there who are interested by the approach above and knowledgeable
 in Hadoop internals that are willing to provide guidance.
 
-*  Are we going down the right path using Snakebite/protobufs to interact with
+*  Are we going down the right path using snakebite/protobufs to interact with
    the namenode?  Should we be doing something else?  `libhdfs` or `webhdfs`
    maybe?
-*  What about writing blocks to HDFS?
+*  What about writing blocks to HDFS?  Is there a non-JVM approach to this?
 *  Is there some danger in sidestepping HDFS in this manner?

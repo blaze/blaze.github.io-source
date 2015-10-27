@@ -58,7 +58,7 @@ and we query the namenode to find out what just happened.
 Java projects use the HDFS Java library.  We avoid JVM dependence and so
 instead use Spotify's
 [snakebite](http://snakebite.readthedocs.org/en/latest/) library, which
-includes the Protobuf headers necessary to interact with the namenode directly.
+includes the protobuf headers necessary to interact with the namenode directly.
 
 The library code within Snakebite doesn't support our desired queries, and so
 we use their protobuf headers to write custom code available
@@ -131,8 +131,8 @@ into many small files/blocks, each of which is replicated across three
 machines.  We can even go and inspect these blocks.
 
 ```
-$ ssh hdfs@192.168.50.101
-hdfs@compute2:/home/vagrant$ head /data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741826
+$ ssh hdfs@192.168.50.106
+hdfs@compute3:/home/vagrant$ head /data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741844'},
 vendor_id, pickup_datetime, dropoff_datetime, passenger_count, trip_distance, pickup_longitude, pickup_latitude, rate_code, store_and_fwd_flag, dropoff_longitude, dropoff_latitude, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
 
 CMT,2014-01-09 20:45:25,2014-01-09 20:52:31,1,0.69999999999999996,-73.994770000000003,40.736828000000003,1,N,-73.982226999999995,40.731789999999997,CRD,6.5,0.5,0.5,1.3999999999999999,0,8.9000000000000004
@@ -198,7 +198,7 @@ def sum_series(seq):
     return result
 
 >>> counts = executor.map(lambda df: df.passenger_count.value_counts(), dfs)
->>> total = executor.submit(sum, counts)
+>>> total = executor.submit(sum_series, counts)
 >>> total.result()
 0          259
 1      9727301
@@ -231,7 +231,7 @@ yet we were able to compose them together to achieve something that previously
 only monolithic frameworks (Hadoop, Spark, Impala) have managed.  HDFS no
 longer feels like "big data magic"; it's just a way that big files get split up
 into smaller files on many machines that we need to track down to run our
-normal toolset.
+normal tool-set.
 
 That's not to disparage frameworks or elegant streamlined approaches.  If
 enough people care about this sort of thing then I may hook up

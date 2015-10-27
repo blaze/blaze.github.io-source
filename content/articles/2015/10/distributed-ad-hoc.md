@@ -3,6 +3,7 @@ Date: 2015-10-27 00:00
 Slug: distributed-ad-hoc
 Authors: Matthew Rocklin
 Summary: Ad-hoc distributed computations with a concurrent.futures interface
+Tags: distributed
 
 **tl;dr: We enable ad-hoc distributed computations with a concurrent.futures
 interface.**

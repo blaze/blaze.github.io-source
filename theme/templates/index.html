@@ -45,19 +45,21 @@
             <img class="blog-image" src="{{ SITEURL }}/images/{{article.image}}">
           {% endif %}
           {{ article.summary }}
-        </div>
 
-        <div class="meta">
           <div>
             <a class="button button-primary button-read" href="{{ SITEURL }}/{{ article.url }}">Read</a>
           </div>
 
+        </div>
+
+        <div class="meta">
+          {% if article.tags %}
           <div>
               {% for tag in article.tags %}
                 <a class="label-default" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
               {% endfor %}
           </div>
-
+          {% endif %}
         </div>
 
       </article>

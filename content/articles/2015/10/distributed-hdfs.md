@@ -1,3 +1,13 @@
+Outline
+-------
+
+1.  Describe HDFS
+2.  Motivate talking directly to datanodes
+3.  Use snakebite to query locations of blocks
+4.  Use distributed to submit jobs directly on those blocks
+5.  Use snakebite+distributed+pandas to process CSV files on HDFS in Pure
+    Python
+
 
 HDFS Summary
 ------------
@@ -41,7 +51,7 @@ Query Block Locations with Snakebite
 
 So we put a dataset on an HDFS instance:
 
-    TODO: hdfs cp nyctaxi.csv /data/nyctaxi/
+    $ hdfs cp nyctaxi.csv /data/nyctaxi/   TODO
 
 and we query the namenode to find out what just happened.
 
@@ -56,18 +66,22 @@ we use their protobuf headers and some write custom code (written by
 [Martin Durant](https://github.com/martindurant/)) available
 [here](https://github.com/mrocklin/distributed/blob/master/distributed/hdfs.py).
 
+```python
 >>> from distributed import hdfs
 >>> blocks = hdfs.get_locations('/data/nyctaxi/', '192.168.1.100', 9000):
 >>> blocks
 TODO
+```
 
 So we see that our single file, TODO, has been turned into many small
 files/blocks, each of which is replicated across three machines.  We can even
 go and inspect these blocks.
 
+```
 $ ssh hostname  TODO
 $ head filename TODO
 TODO
+```
 
 Once we have block locations on the host file system we ditch HDFS altogether
 and revert to our normal model of the world.
@@ -78,6 +92,7 @@ Data-local tasks with distributed
 
 So lets load all of these blocks with Pandas and distributed.
 
+```python
 >>> columns = [TODO]
 
 >>> from distributed import Executor
@@ -85,6 +100,7 @@ So lets load all of these blocks with Pandas and distributed.
 >>> dfs = [executor.submit(pd.read_csv, block['path'], workers=block['hosts'],
 ...                        columns=columns, skipinitialspace=True)
 ...        for block in blocks]
+```
 
 We use the `workers=` keyword argument to `Executor.submit` to restrict these
 jobs so that they can only run on the hosts whose local file systems actually
@@ -99,10 +115,12 @@ Some simple analysis
 We can now do some simple work, like counting all of the passenger counts
 values.
 
+```python
 >>> counts = executor.map(lambda df: df.passenger_count.value_counts(), dfs)
 >>> total = executor.submit(sum, counts)
 >>> total.result()
 TODO
+```
 
 
 Conclusion

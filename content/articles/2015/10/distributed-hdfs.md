@@ -1,4 +1,4 @@
-Title: Running PyData on HDFS without the JVM
+Title: PyData on HDFS without Java
 Date: 2015-10-28 00:00
 Slug: distributed-hdfs
 Authors: Matthew Rocklin

@@ -257,14 +257,16 @@ the near future.
 Questions
 ---------
 
-I'm pretty ignorant when it comes to the JVM HDFS stack.  It'd be great to find
-some people out there who are interested by the approach above and knowledgeable
-in Hadoop internals that are willing to provide guidance.
+It's hard to find documentation and best practices for integrating with the
+lower-levels of the Hadoop stack.  It'd be great to find experts here that are
+both interested in the approach above and knowledgeable enough to provide
+guidance.  In particular, some questions:
 
 *  Are we going down the right path using snakebite/protobufs to interact with
-   the namenode?  Should we be doing something else?  `libhdfs` or `webhdfs`
-   maybe?
+   the namenode?  Should we be doing something else?  Perhaps `libhdfs` or
+   `webhdfs`?
 *  What about writing blocks to HDFS?  Is there a non-JVM approach to this?
-*  Is there some danger in sidestepping HDFS in this manner?
+*  Is there some danger in sidestepping HDFS in this manner?  Should we be
+   asking for bytes on disk instead of directly accessing the files?
 *  Are we making any dumb assumptions in the protobuf code
    [here](https://github.com/mrocklin/distributed/blob/master/distributed/hdfs.py)?

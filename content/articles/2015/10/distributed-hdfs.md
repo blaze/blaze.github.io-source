@@ -4,15 +4,15 @@ Slug: distributed-hdfs
 Authors: Matthew Rocklin
 Summary: We use snakebite and distributed to run Pandas on CSV data in HDFS
 
-Outline
--------
+tl;dr
+-----
 
-1.  Describe HDFS
-2.  Motivate talking directly to datanodes
-3.  Use snakebite to query locations of blocks
-4.  Use distributed to submit jobs directly on those blocks
-5.  Use snakebite+distributed+pandas to process CSV files on HDFS in Pure
-    Python
+1.  HDFS splits large files into many small blocks replicated on many datanodes
+2.  For efficient computation we must use data directly on datanodes
+3.  `snakebite` queries the locations of the individual blocks
+4.  `distributed` executes functions directly on those blocks on the datanodes
+5.  `snakebite`+`distributed`+`pandas` enables distributed CSV processing
+     on HDFS in Pure Python
 
 
 HDFS Summary

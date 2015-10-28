@@ -49,22 +49,23 @@ efficient data local computation on HDFS then its what we'll have to do too.
 Query Block Locations with Snakebite
 ------------------------------------
 
-So we put a dataset on an HDFS instance:
+We put a dataset on HDFS instance through the command line interface:
 
     $ hdfs dfs -cp yellow_tripdata_2014-01.csv /data/nyctaxi/
 
-and we query the namenode to find out what just happened.
+Then we query the namenode to discover how it sharded this file.
 
-Java projects use the HDFS Java library.  We avoid JVM dependence and so
-instead use Spotify's
-[snakebite](http://snakebite.readthedocs.org/en/latest/) library, which
-includes the protobuf headers necessary to interact with the namenode directly.
+To avoid JVM dependence we use Spotify's
+[snakebite](http://snakebite.readthedocs.org/en/latest/) library which
+includes the protobuf headers necessary to interact with the namenode directly,
+without using the Java HDFS client library.
 
 The library code within Snakebite doesn't support our desired queries, and so
 we use their protobuf headers to write custom code available
 [here](https://github.com/mrocklin/distributed/blob/master/distributed/hdfs.py)
 (work done by [Ben Zaitlen](https://github.com/quasiben) and
-[Martin Durant](https://github.com/martindurant/)).
+[Martin Durant](https://github.com/martindurant/)).  We get back a list of
+paths and hosts for each of our blocks.
 
 ```python
 >>> from distributed import hdfs
@@ -126,9 +127,12 @@ we use their protobuf headers to write custom code available
   'path': '/data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741861'}]
 ```
 
-So we see that our single file, `yellow_tripdata_2014-01.csv`, has been turned
-into many small files/blocks, each of which is replicated across three
-machines.  We can even go and inspect these blocks.
+HDFS cut up our large single file, `yellow_tripdata_2014-01.csv`, into many
+small files/blocks.  HDFS replicates each block across three machines.  For
+each block we see the three machines in the `'hosts'` value and we see where on
+those machines' local file systems we can find the actual block.   We inspect
+the first of these blocks manually by `ssh`ing into one of the the listed hosts
+and inspecing that host's local file system.
 
 ```
 $ ssh hdfs@192.168.50.106
@@ -222,19 +226,21 @@ Conclusion
 ----------
 
 We used `snakebite`'s protobuf definitions and `distributed`'s data-local task
-scheduling to run Pandas directly on CSV data in HDFS.  We didn't touch the JVM
-nor did we invent a whole new framework but instead reused existing components.
+scheduling to run Pandas directly on CSV data in HDFS.  We didn't touch the
+JVM.  We didn't invent a new framework.  Instead we reused existing components
+in the PyData ecosystem to handle biggish data on HDFS with only Python
+projects.
 
-Our approach wasn't elegant or streamlined but it also wasn't terribly complex.
-None of Snakebite, distributed, nor Pandas was designed for this use case and
-yet we were able to compose them together to achieve something that previously
-only monolithic frameworks (Hadoop, Spark, Impala) have managed.  HDFS no
-longer feels like "big data magic"; it's just a way that big files get split up
-into smaller files on many machines that we need to track down to run our
-normal tool-set.
+Our approach wasn't elegant or streamlined but it also wasn't complex.  None of
+`snakebite`, `distributed`, nor `pandas` was designed for this use case and yet
+we composed them together to achieve something that was previously only
+possible through large monolithic frameworks foreign to Python.  HDFS no longer
+feels like "big data magic"; it's just a way that big files get split up into
+small files on many machines that we need to track down to run our normal
+tool-set.
 
-That's not to disparage frameworks or elegant streamlined approaches.  If
-enough people care about this sort of thing then I may hook up
+That's not to disparage the use of monolithic frameworks or elegant streamlined
+approaches.  If enough people care about this sort of thing then I may hook up
 [dask.dataframe](https://dask.pydata.org/en/latest/dataframe.html) to this in
 the near future.
 
@@ -250,3 +256,5 @@ in Hadoop internals that are willing to provide guidance.
    maybe?
 *  What about writing blocks to HDFS?  Is there a non-JVM approach to this?
 *  Is there some danger in sidestepping HDFS in this manner?
+*  Are we making any dumb assumptions in the protobuf code
+   [here](https://github.com/mrocklin/distributed/blob/master/distributed/hdfs.py)?

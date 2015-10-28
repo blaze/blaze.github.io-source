@@ -140,20 +140,18 @@ those machines' local file systems we can find the actual block.   We inspect
 the first of these blocks manually by `ssh`ing into one of the the listed hosts
 and inspecing that host's local file system.
 
-```
-$ ssh hdfs@192.168.50.106
-hdfs@compute3:/home/vagrant$ head /data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741844'},
-vendor_id, pickup_datetime, dropoff_datetime, passenger_count, trip_distance, pickup_longitude, pickup_latitude, rate_code, store_and_fwd_flag, dropoff_longitude, dropoff_latitude, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
+    $ ssh hdfs@192.168.50.106
+    hdfs@compute3:/home/vagrant$ head /data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741844'},
+    vendor_id, pickup_datetime, dropoff_datetime, passenger_count, trip_distance, pickup_longitude, pickup_latitude, rate_code, store_and_fwd_flag, dropoff_longitude, dropoff_latitude, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
 
-CMT,2014-01-09 20:45:25,2014-01-09 20:52:31,1,0.69999999999999996,-73.994770000000003,40.736828000000003,1,N,-73.982226999999995,40.731789999999997,CRD,6.5,0.5,0.5,1.3999999999999999,0,8.9000000000000004
-CMT,2014-01-09 20:46:12,2014-01-09 20:55:12,1,1.3999999999999999,-73.982392000000004,40.773381999999998,1,N,-73.960448999999997,40.763995000000001,CRD,8.5,0.5,0.5,1.8999999999999999,0,11.4
-CMT,2014-01-09 20:44:47,2014-01-09 20:59:46,2,2.2999999999999998,-73.988569999999996,40.739406000000002,1,N,-73.986626000000001,40.765217,CRD,11.5,0.5,0.5,1.5,0,14
-CMT,2014-01-09 20:44:57,2014-01-09 20:51:40,1,1.7,-73.960212999999996,40.770463999999997,1,N,-73.979862999999995,40.777050000000003,CRD,7.5,0.5,0.5,1.7,0,10.199999999999999
-CMT,2014-01-09 20:47:09,2014-01-09 20:53:32,1,0.90000000000000002,-73.995371000000006,40.717247999999998,1,N,-73.984367000000006,40.720523999999997,CRD,6,0.5,0.5,1.75,0,8.75
-CMT,2014-01-09 20:45:07,2014-01-09 20:51:01,1,0.90000000000000002,-73.983811000000003,40.749654999999997,1,N,-73.989746999999994,40.756574999999998,CRD,6,0.5,0.5,1.3999999999999999,0,8.4000000000000004
-CMT,2014-01-09 20:44:04,2014-01-09 21:05:45,1,3.6000000000000001,-73.984138000000002,40.726317000000002,1,N,-73.962868999999998,40.758443,CRD,16.5,0.5,0.5,5.25,0,22.75
-CMT,2014-01-09 20:43:23,2014-01-09 20:52:07,1,2.1000000000000001,-73.979906,40.745849999999997,1,N,-73.959090000000003,40.773639000000003,CRD,9,0.5,0.5,2,0,12
-```
+    CMT,2014-01-09 20:45:25,2014-01-09 20:52:31,1,0.69999999999999996,-73.994770000000003,40.736828000000003,1,N,-73.982226999999995,40.731789999999997,CRD,6.5,0.5,0.5,1.3999999999999999,0,8.9000000000000004
+    CMT,2014-01-09 20:46:12,2014-01-09 20:55:12,1,1.3999999999999999,-73.982392000000004,40.773381999999998,1,N,-73.960448999999997,40.763995000000001,CRD,8.5,0.5,0.5,1.8999999999999999,0,11.4
+    CMT,2014-01-09 20:44:47,2014-01-09 20:59:46,2,2.2999999999999998,-73.988569999999996,40.739406000000002,1,N,-73.986626000000001,40.765217,CRD,11.5,0.5,0.5,1.5,0,14
+    CMT,2014-01-09 20:44:57,2014-01-09 20:51:40,1,1.7,-73.960212999999996,40.770463999999997,1,N,-73.979862999999995,40.777050000000003,CRD,7.5,0.5,0.5,1.7,0,10.199999999999999
+    CMT,2014-01-09 20:47:09,2014-01-09 20:53:32,1,0.90000000000000002,-73.995371000000006,40.717247999999998,1,N,-73.984367000000006,40.720523999999997,CRD,6,0.5,0.5,1.75,0,8.75
+    CMT,2014-01-09 20:45:07,2014-01-09 20:51:01,1,0.90000000000000002,-73.983811000000003,40.749654999999997,1,N,-73.989746999999994,40.756574999999998,CRD,6,0.5,0.5,1.3999999999999999,0,8.4000000000000004
+    CMT,2014-01-09 20:44:04,2014-01-09 21:05:45,1,3.6000000000000001,-73.984138000000002,40.726317000000002,1,N,-73.962868999999998,40.758443,CRD,16.5,0.5,0.5,5.25,0,22.75
+    CMT,2014-01-09 20:43:23,2014-01-09 20:52:07,1,2.1000000000000001,-73.979906,40.745849999999997,1,N,-73.959090000000003,40.773639000000003,CRD,9,0.5,0.5,2,0,12
 
 Once we have block locations on the host file system we ditch HDFS and just
 think about remote hosts that have files on their local file systems.  HDFS has
@@ -194,6 +192,12 @@ Or alternatively we've wrapped up both steps into a little convenience function:
 ...                       columns=columns, skiprows=1)
 ```
 
+As a reminder from
+[last time](http://blaze.pydata.org/blog/2015/10/27/distributed-ad-hoc/) these
+operations produce `Future` objects that point to remote results on the worker
+computers.  This does not pull results back to local memory.  We can use these
+futures in future computations with the executor.
+
 
 Some simple analysis
 --------------------
@@ -223,9 +227,9 @@ def sum_series(seq):
 208         19
 ```
 
-Looking at these results we see that as is expected, most rides have a single
-passenger.  There are a few oddities like many rides with zero passengers, a
-ride with 208 passengers, and an unexpected spike at five passengers.
+Looking at these results we see that as expected, most rides have a single
+passenger.  There are also a few oddities like many rides with zero passengers,
+a ride with 208 passengers, and an unexpected spike at five passengers.
 
 
 Conclusion

@@ -135,10 +135,10 @@ paths and hosts for each of our blocks.
 
 HDFS cut up our large single file, `yellow_tripdata_2014-01.csv`, into many
 small files/blocks.  HDFS replicates each block across three machines.  For
-each block we see the three machines in the `'hosts'` value and we see where on
-those machines' local file systems we can find the actual block.   We inspect
-the first of these blocks manually by `ssh`ing into one of the the listed hosts
-and inspecing that host's local file system.
+each block `'hosts'` tells us which three machines hold that block and
+`'path'` tells us where on the local file systems of those hosts we can find
+the actual block.   We inspect the first of these blocks manually by `ssh`ing
+into one of the listed hosts and inspecting that host's local file system.
 
     $ ssh hdfs@192.168.50.106
     hdfs@compute3:/home/vagrant$ head /data/dfs/dn/current/BP-1962702953-127.0.1.1-1445557266071/current/finalized/subdir0/subdir0/blk_1073741844'},

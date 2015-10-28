@@ -157,9 +157,9 @@ Once we have block locations on the host file system we ditch HDFS and just
 think about remote hosts that have files on their local file systems.  HDFS has
 played its part and can exit the stage.
 
-*Note: since writing this we've found a [wonderful article by Julia
-Evans](http://jvns.ca/blog/2014/05/15/diving-into-hdfs/), that describes a
-similar process.  It's worth a read.*
+*Note: since writing this we've found a
+[wonderful article](http://jvns.ca/blog/2014/05/15/diving-into-hdfs/) by
+[Julia Evans](http://jvns.ca/), that describes a similar process.*
 
 
 Data-local tasks with distributed

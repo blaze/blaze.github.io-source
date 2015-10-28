@@ -157,6 +157,10 @@ Once we have block locations on the host file system we ditch HDFS and just
 think about remote hosts that have files on their local file systems.  HDFS has
 played its part and can exit the stage.
 
+*Note: since writing this we've found a [wonderful article by Julia
+Evans](http://jvns.ca/blog/2014/05/15/diving-into-hdfs/), that describes a
+similar process.  It's worth a read.*
+
 
 Data-local tasks with distributed
 ---------------------------------
@@ -236,7 +240,7 @@ Conclusion
 ----------
 
 We used `snakebite`'s protobuf definitions and `distributed`'s data-local task
-scheduling to run Pandas directly on CSV data in HDFS.  We didn't touch the
+scheduling to run `pandas` directly on CSV data in `HDFS`.  We didn't touch the
 JVM.  We didn't invent a new framework.  Instead we reused existing components
 in the PyData ecosystem to handle biggish data on HDFS with only Python
 projects.

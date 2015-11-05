@@ -3,6 +3,7 @@ Date: 2015-10-28 00:00
 Slug: distributed-hdfs
 Authors: Matthew Rocklin
 Summary: We use snakebite and distributed to run Pandas on CSV data in HDFS
+Tags: hdfs, snakebite, distributed, pandas
 
 tl;dr
 -----

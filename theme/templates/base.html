@@ -49,9 +49,11 @@
           <!--li class="navbar-item"><a class="navbar-link" href="{{ SITEURL }}/pages/examples">Examples</a></li-->
           <!--li class="navbar-item"><a class="navbar-link" href="{{ SITEURL }}/pages/team">Team</a></li-->
           <li class="navbar-item"><a class="navbar-link" href="{{ SITEURL }}/archives">Blog</a></li>
+
         </ul>
-        <div>
-            <a class="navbar-link" href="{{ SITEURL }}/"><img src="{{ SITEURL }}/images/blaze.png" class="site-icon"></a>
+        <div class="sponsor">
+            <small> Sponsored by:</small>
+            <a href="https://www.continuum.io/"><img src="{{ SITEURL }}/images/cio_logo.png" class="cio-icon"></a>
         </div>
       </div>
     </nav>
@@ -62,15 +64,6 @@
 {% endblock content %}
 
 <br>
-
-
-<footer class="footer">
-      <div class="container">
-        <!--a href="https://anaconda.org"><img src="{{ SITEURL }}/images/anaconda_logo.png" class="anaconda-icon"></a-->
-        <p><small>Development sponsored by</small><a class="navbar-link" href="https://www.continuum.io/"><img src="{{ SITEURL }}/images/cio_logo.png" class="cio-icon"></a></p>
-    </div>
-    <br>
-</footer>
 
 <!-- Google Analytics -->
 {% include 'includes/ga.html' %}

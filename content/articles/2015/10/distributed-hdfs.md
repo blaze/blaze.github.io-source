@@ -192,8 +192,8 @@ Or alternatively we've wrapped up both steps into a little convenience function:
 
 ```python
 >>> from distributed import hdfs
->>> dfs = hdfs.map_blocks(executor, pd.read_csv, '/data/nyctaxi/',
-...                       '192.168.50.100', 9000,
+>>> dfs = hdfs.map_blocks(pd.read_csv, '/data/nyctaxi/',
+...                       '192.168.50.100', 9000, executor=executor,
 ...                       columns=columns, skiprows=1)
 ```
 

@@ -1,4 +1,4 @@
-Title: Introducint Dask Distributed
+Title: Introducing Dask Distributed
 Date: 2016-02-17 00:00
 Slug: dask-distributed-1
 Authors: Matthew Rocklin

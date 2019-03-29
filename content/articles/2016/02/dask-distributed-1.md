@@ -36,7 +36,7 @@ cluster.
 
 We provision nine `m3.2xlarge` nodes on EC2.  These have eight cores and 30GB
 of RAM each.  On this cluster we provision one scheduler and nine workers (see
-[setup docs](http://distributed.readthedocs.org/en/latest/setup.html)).  (More
+[setup docs](https://distributed.dask.org/en/latest/setup.html)).  (More
 on launching in later posts.)  We have five months of data, from 2015-01-01 to
 2015-05-31 on the `githubarchive-data` bucket in S3.  This data is publicly
 avaialble if you want to play with it on EC2.  You can download the full
@@ -105,7 +105,7 @@ records = e.persist(records)
 
 The data lives in S3 in hourly files as gzipped encoded, line delimited JSON.
 The `s3.read_text` and `text.map` functions produce
-[dask.bag](http://dask.pydata.org/en/latest/bag.html) objects which track our
+[dask.bag](https://docs.dask.org/en/latest/bag.html) objects which track our
 operations in a lazily built task graph.  When we ask the executor to `persist`
 this collection we ship those tasks off to the scheduler to run on all of the
 workers in parallel.  The `persist` function gives us back another `dask.bag`
@@ -192,7 +192,7 @@ overhead.
 Investigate Jupyter
 -------------------
 
-We investigate the activities of [Project Jupyter](http://jupyter.org/).  We
+We investigate the activities of [Project Jupyter](https://jupyter.org/).  We
 chose this project because it's sizable and because we understand the players
 involved and so can check our accuracy.  This will require us to filter our
 data to a much smaller subset, then find popular repositories and members.
@@ -489,10 +489,10 @@ done differently with more time.
 Links
 -----
 
-*   [dask](https://dask.pydata.org/en/latest/), the original project
-*   [distributed](https://distributed.readthedocs.org/en/latest/), the
+*   [dask](https://docs.dask.org/en/latest/), the original project
+*   [distributed](https://distributed.dask.org/en/latest/), the
     distributed memory scheduler powering the cluster computing
-*   [dask.bag](http://dask.pydata.org/en/latest/bag.html), the user API we've
+*   [dask.bag](https://docs.dask.org/en/latest/bag.html), the user API we've
     used in this post.
 *   This post largely repeats work by [Blake Griffith](https://github.com/cowlicks) in a
     [similar post](https://www.continuum.io/content/dask-distributed-and-anaconda-cluster)

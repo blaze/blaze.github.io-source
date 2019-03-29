@@ -63,7 +63,7 @@ We put a dataset on HDFS instance through the command line interface:
 Then we query the namenode to discover how it sharded this file.
 
 To avoid JVM dependence we use Spotify's
-[snakebite](http://snakebite.readthedocs.org/en/latest/) library which
+[snakebite](https://snakebite.readthedocs.org/en/latest/) library which
 includes the protobuf headers necessary to interact with the namenode directly,
 without using the Java HDFS client library.
 
@@ -159,8 +159,8 @@ think about remote hosts that have files on their local file systems.  HDFS has
 played its part and can exit the stage.
 
 *Note: since writing this we've found a
-[wonderful article](http://jvns.ca/blog/2014/05/15/diving-into-hdfs/) by
-[Julia Evans](http://jvns.ca/), that describes a similar process.*
+[wonderful article](https://jvns.ca/blog/2014/05/15/diving-into-hdfs/) by
+[Julia Evans](https://jvns.ca/), that describes a similar process.*
 
 
 Data-local tasks with distributed
@@ -198,7 +198,7 @@ Or alternatively we've wrapped up both steps into a little convenience function:
 ```
 
 As a reminder from
-[last time](http://blaze.pydata.org/blog/2015/10/27/distributed-ad-hoc/) these
+[last time](https://blaze.pydata.org/blog/2015/10/27/distributed-ad-hoc/) these
 operations produce `Future` objects that point to remote results on the worker
 computers.  This does not pull results back to local memory.  We can use these
 futures in future computations with the executor.

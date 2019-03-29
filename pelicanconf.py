@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Blaze Developers'
 SITENAME = u'The Blaze Ecosystem'
-SITEURL = 'http://blaze.github.io/'
+SITEURL = 'https://blaze.github.io/'
 TITLE = 'The Blaze Ecosystem'
 SUBTITLE = 'Connecting people to data'
 

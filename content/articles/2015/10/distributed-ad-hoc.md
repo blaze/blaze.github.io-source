@@ -15,8 +15,8 @@ Distributed
 The `distributed` project prototype provides distributed computing on a cluster
 in pure Python.
 
-*  [docs](http://distributed.readthedocs.org/en/latest/),
-   [source](http://github.com/mrocklin/distributed/),
+*  [docs](https://distributed.dask.org/en/latest/),
+   [source](https://github.com/mrocklin/distributed/),
    [chat](https://gitter.im/mrocklin/distributed)
 
 concurrent.futures interface
@@ -109,8 +109,8 @@ As an example we perform a binary tree reduction on a sequence of random
 arrays.
 
 This is the kind of algorithm you would find hard-coded into a library like
-[Spark](http://spark.apache.org/) or
-[dask.array](http://dask.pydata.org/en/latest/array.html)/[dask.dataframe](http://dask.pydata.org/en/latest/dataframe.html)
+[Spark](https://spark.apache.org/) or
+[dask.array](https://docs.dask.org/en/latest/array.html)/[dask.dataframe](https://docs.dask.org/en/latest/dataframe.html)
 but that we can accomplish by hand with some for loops while still using
 parallel distributed computing.  The difference here is that we're not limited
 to the algorithms chosen for us and can screw around more freely.
@@ -156,15 +156,15 @@ Notes
 -----
 
 Various other Python frameworks provide distributed function evaluation.  A few
-are listed [here](http://distributed.readthedocs.org/en/latest/related-work.html)
+are listed [here](https://distributed.dask.org/en/latest/related-work.html)
 .  Notably we're stepping on the toes of
-[SCOOP](http://scoop.readthedocs.org/en/0.7/), an excellent library that also
+[SCOOP](https://scoop.readthedocs.org/en/0.7/), an excellent library that also
 provides a distributed `concurrent.futures` interface.
 
 The `distributed` project could use a more distinct name.  Any suggestions?
 
 For more information see the following links:
 
-*   [Documentation](http://distributed.readthedocs.org/en/latest/)
-*   [Source on Github](http://github.com/mrocklin/distributed/)
+*   [Documentation](https://distributed.dask.org/en/latest/)
+*   [Source on Github](https://github.com/mrocklin/distributed/)
 *   [Gitter chat](https://gitter.im/mrocklin/distributed)
